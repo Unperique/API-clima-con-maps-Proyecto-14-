@@ -1,59 +1,102 @@
+/* Estilos para el cuerpo del documento */
 body {
+    /* Definir la familia de fuentes predeterminada */
     font-family: Arial, sans-serif;
+    /* Eliminar los márgenes del cuerpo */
     margin: 0;
+    /* Eliminar los márgenes del cuerpo */
     padding: 0;
+    /* Establecer el modelo de caja como flex para centrar vertical y horizontalmente el contenido */
     display: flex;
+    /* Centrar el contenido horizontalmente */
     justify-content: center;
+    /* Centrar el contenido verticalmente */
     align-items: center;
+    /* Establecer la altura del cuerpo en el 100% de la altura de la ventana */
     height: 100vh;
+    /* Establecer el color de fondo del cuerpo en un gris claro */
     background-color: #f0f0f0;
 }
 
+/* Estilos para el contenedor principal */
 .container {
+    /* Centrar el contenido textual */
     text-align: center;
+    /* Establecer el color de fondo del contenedor en blanco */
     background-color: #fff;
+    /* Establecer el relleno del contenedor */
     padding: 20px;
+    /* Establecer la esquina redondeada del contenedor */
     border-radius: 8px;
+    /* Agregar una sombra al contenedor */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Establecer el ancho máximo del contenedor */
     max-width: 600px;
+    /* Establecer el ancho del contenedor al 90% del ancho disponible */
     width: 90%;
 }
 
+/* Estilos para los encabezados nivel 1 y 2 */
 h1, h2 {
+    /* Establecer el color del texto en negro */
     color: #333;
 }
 
+/* Estilos para el campo de texto de entrada de ubicación */
 input[type="text"] {
+    /* Establecer el ancho del campo de texto al 80% del ancho disponible */
     width: 80%;
+    /* Establecer el relleno del campo de texto */
     padding: 8px;
+    /* Establecer el tamaño de fuente del campo de texto */
     font-size: 16px;
+    /* Establecer el borde del campo de texto con un ancho de 1px y un color gris claro */
     border: 1px solid #ccc;
+    /* Establecer la esquina redondeada del campo de texto con un radio de 4px */
     border-radius: 4px;
+    /* Establecer un margen inferior de 10px para separar el campo de texto del siguiente elemento */
     margin-bottom: 10px;
 }
 
+/* Estilos para el mapa */
 #map {
+    /* Establecer la altura del mapa en 300px */
     height: 300px;
+    /* Establecer el ancho del mapa al 100% del ancho disponible */
     width: 100%;
+    /* Establecer un margen superior de 20px para separar el mapa del siguiente elemento */
     margin-top: 20px;
+    /* Establecer un borde del mapa con un ancho de 1px y un color gris claro */
     border: 1px solid #ccc;
+    /* Establecer la esquina redondeada del mapa con un radio de 8px */
     border-radius: 8px;
 }
 
+/* Estilos para la sección de información del clima */
 #weather-info {
+    /* Establecer un margen superior de 20px para separar la sección de información del clima del siguiente elemento */
     margin-top: 20px;
 }
 
+/* Estilos para la imagen del clima */
 #weather-image {
+    /* Establecer un margen superior de 20px para separar la imagen del clima del siguiente elemento */
     margin-top: 20px;
+    /* Establecer un ancho máximo de 100px para la imagen */
     max-width: 100px;
+    /* Establecer una altura automática para la imagen */
     height: auto;
+    /* Centrar la imagen horizontal y verticalmente */
     display: block;
+    /* Establecer márgenes automáticos para centrar la imagen */
     margin-left: auto;
     margin-right: auto;
 }
 
+/* Estilos para los elementos de información del clima */
 #temperature, #precipitation, #wind {
+    /* Establecer el tamaño de fuente en 18px */
     font-size: 18px;
+    /* Establecer el color del texto en negro */
     color: #333;
 }

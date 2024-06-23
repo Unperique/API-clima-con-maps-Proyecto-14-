@@ -1,25 +1,48 @@
+<!--
+Documentación del código:
+El archivo index.html es el archivo principal de la aplicación que se encarga de mostrar la interfaz de usuario (UI) de la aplicación del clima.
+
+Estructura del archivo:
+- El encabezado de la página incluye la declaración del tipo de documento, la codificación de caracteres y la etiqueta meta viewport.
+- El título de la página es "Aplicación del clima".
+- Se incluye un enlace a un archivo CSS externo llamado "styles.css" que contiene las reglas de estilo para la página.
+- Se incluye un script externo que se obtiene de la API de Google Maps y se utiliza para mostrar el mapa en la página.
+- Se incluye otro script externo llamado "script.js" que se encarga de la lógica de la aplicación.
+- El cuerpo de la página contiene un div con la clase "container" que actúa como contenedor principal para todos los elementos de la página.
+- Dentro del div "container", se muestra un encabezado (h1) que dice "Aplicación del clima".
+- Se muestra un campo de entrada de texto (input) con el id "location-input" que se utiliza para ingresar la ubicación del usuario.
+- Se muestra un div con el id "map" que se utiliza para mostrar el mapa en la página.
+- Dentro del div "container", se muestra un div con el id "weather-info" que contiene información sobre el clima actual.
+- Dentro del div "weather-info", se muestra un encabezado (h2) que dice "Clima actual".
+- Se muestra una imagen con el id "weather-image" que se utiliza para mostrar la imagen correspondiente al clima actual.
+- Se muestran tres párrafos (p) con los ids "temperature", "precipitation" y "wind" que se utilizan para mostrar la temperatura, la precipitación y el viento en la ubicación ingresada por el usuario.
+- En la parte inferior del archivo se incluye un script que se ejecuta cuando se carga la página y llama a la función "initMap" que se define en el archivo "script.js".
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicación del clima</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxlO8ILdL4GvaE8wreaAke_-k3Al4V-IM&libraries=places&callback=initMap" async defer></script>
-    <script defer src="script.js"></script>
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Establece el ancho de la página para adaptarse a diferentes dispositivos -->
+    <title>Aplicación del clima</title> <!-- Define el título de la página -->
+    <link rel="stylesheet" href="styles.css"> <!-- Incluye el archivo CSS externo con las reglas de estilo -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxlO8ILdL4GvaE8wreaAke_-k3Al4V-IM&libraries=places&callback=initMap" async defer></script> <!-- Incluye el script externo con la API de Google Maps -->
+    <script defer src="script.js"></script> <!-- Incluye el script externo con la lógica de la aplicación -->
 </head>
 <body>
-    <div class="container">
-        <h1>Aplicación del clima</h1>
-        <input id="location-input" type="text" placeholder="Entrar a la localización">
-        <div id="map"></div>
-        <div id="weather-info">
-            <h2>Clima actual</h2>
-            <img id="weather-image" src="" alt="Imagen del clima" style="display: none;">
-            <p id="temperature">Temperatura: -- °C</p>
-            <p id="precipitation">Precipitación: -- mm</p>
-            <p id="wind">Viento: -- km/h</p>
+    <div class="container"> <!-- Contenedor principal para todos los elementos de la página -->
+        <h1>Aplicación del clima</h1> <!-- Encabezado principal de la página -->
+        <input id="location-input" type="text" placeholder="Entrar a la localización"> <!-- Campo de entrada de texto para ingresar la ubicación del usuario -->
+        <div id="map"></div> <!-- Div que muestra el mapa -->
+        <div id="weather-info"> <!-- Div que muestra la información del clima actual -->
+            <h2>Clima actual</h2> <!-- Encabezado secundario con la información del clima actual -->
+            <img id="weather-image" src="" alt="Imagen del clima" style="display: none;"> <!-- Imagen para mostrar la imagen correspondiente al clima actual -->
+            <p id="temperature">Temperatura: -- °C</p> <!-- Parrafo para mostrar la temperatura en la ubicación ingresada por el usuario -->
+            <p id="precipitation">Precipitación: -- mm</p> <!-- Parrafo para mostrar la precipitación en la ubicación ingresada por el usuario -->
+            <p id="wind">Viento: -- km/h</p> <!-- Parrafo para mostrar el viento en la ubicación ingresada por el usuario -->
         </div>
     </div>
+    <script>
+        window.onload = initMap; <!-- Ejecuta la función initMap cuando se carga la página -->
+    </script>
 </body>
 </html>
