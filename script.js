@@ -4,7 +4,6 @@ let marker;
 
 function initMap() {
     // Inicializar el mapa
-    //crea el mapa y lo inserta en nuestro elemento HTML
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 4.8087174, lng: -75.690601 },
         zoom: 8,
@@ -12,8 +11,8 @@ function initMap() {
 
     // Inicializar el campo de autocomplete
     const input = document.getElementById("location-input");
-    autocomplete = new google.maps.places.Autocomplete(input); //Metodo de google para autocompletar la localización
-    autocomplete.bindTo("bounds", map); //para que el campo de autocomplete se ajuste al mapa
+    autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo("bounds", map);
 
     autocomplete.addListener("place_changed", () => {
         const place = autocomplete.getPlace();
@@ -29,7 +28,7 @@ function initMap() {
 
         // Colocar un marcador en la ubicación seleccionada
         if (marker) {
-            marker.setMap(null);// elimina el marcador anterior
+            marker.setMap(null);
         }
         marker = new google.maps.Marker({
             map: map,
@@ -42,17 +41,38 @@ function initMap() {
 }
 
 async function getWeather(lat, lon) {
-    // Obtener el clima actual usando la API de Open Meteo
-    const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m'); // hace la solicitud a la API y con await espera la respuesta
-    console.log(lat)
-    console.log(lon)
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=precipitation`);
     const data = await response.json();
-    console.log(data)
-    
-    // Actualizar el contenido del elemento con la temperatura
+
+    // Actualizar el contenido de los elementos con la información del clima
     const temperatureElement = document.getElementById("temperature");
-    temperatureElement.textContent = `Temperatura: ${data.current.temperature_2m} ${data.current_units.temperature_2m}`;
+    const precipitationElement = document.getElementById("precipitation");
+    const windElement = document.getElementById("wind");
+
+    temperatureElement.textContent = `Temperatura: ${data.current_weather.temperature} °C`;
+    windElement.textContent = `Viento: ${data.current_weather.windspeed} km/h`;
+
+    // Seleccionar el primer valor de precipitación horario
+    const precipitation = data.hourly.precipitation[0];
+    precipitationElement.textContent = `Precipitación: ${precipitation} mm`;
+
+    // Seleccionar y mostrar la imagen adecuada
+    const weatherImageElement = document.getElementById("weather-image");
+    const temperature = data.current_weather.temperature;
+
+    let imageUrl = '';
+    if (temperature <= 0) {
+        imageUrl = 'images/snow.png';
+    } else if (temperature > 0 && temperature <= 15) {
+        imageUrl = 'images/cold.png';
+    } else if (temperature > 15 && temperature <= 25) {
+        imageUrl = 'images/mild.jpg';
+    } else if (temperature > 25) {
+        imageUrl = 'images/hot.png';
+    }
+
+    weatherImageElement.src = imageUrl;
+    weatherImageElement.style.display = 'block';
 }
 
-// Cargar el mapa cuando se carga la página
-window.onload = initMap;
+window.onload = initMap;
